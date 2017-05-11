@@ -9,14 +9,13 @@ import java.io.OutputStream;
 
 /**
  * Created by vararg on 10.05.2017.
- * <p>
- * Inspired by Guava's ByteStreams.copy()
- * https://google.github.io/guava/releases/19.0/api/docs/src-html/com/google/common/io/ByteStreams.html#line.103
  */
 
 class StreamUtils {
     private final static int BUF_SIZE = 1024;
 
+    // Inspired by Guava's ByteStreams.copy()
+    // google.github.io/guava/releases/19.0/api/docs/src-html/com/google/common/io/ByteStreams.html#line.103
     static void copy(InputStream from, OutputStream to) throws IOException {
         byte[] buf = new byte[BUF_SIZE];
 

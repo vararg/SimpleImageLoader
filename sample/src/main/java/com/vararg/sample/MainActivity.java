@@ -64,10 +64,6 @@ public class MainActivity extends AppCompatActivity {
     private List<ItemViewModel> generateItems() {
         List<ItemViewModel> items = new ArrayList<>();
 
-/*        for (int i = 0; i < 24; i++) {
-            items.add(new ItemViewModel("sasd"));
-        }*/
-
         // 18 items with different sizes but similar ratio
 
         //500 x 743

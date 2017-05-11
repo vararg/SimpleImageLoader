@@ -54,11 +54,6 @@ public class BitmapMemoryCache implements Cache<String, Bitmap>, BitmapPool {
         cache.evictAll();
     }
 
-    @Override
-    public Collection<SoftReference<Bitmap>> getReusableBitmaps() {
-        return bitmapPool;
-    }
-
     // This method iterates through the reusable bitmaps, looking for one to use for inBitmap:
     @Override
     public Bitmap getReusableBitmap(BitmapFactory.Options options) {
@@ -117,7 +112,7 @@ public class BitmapMemoryCache implements Cache<String, Bitmap>, BitmapPool {
                 && targetOptions.inSampleSize == 1;
     }
 
-    //A helper function to return the byte usage per pixel of a bitmap based on its configuration.
+    // A helper function to return the byte usage per pixel of a bitmap based on its configuration.
     private static int getBytesPerPixel(Bitmap.Config config) {
         if (config == Bitmap.Config.ARGB_8888) {
             return 4;

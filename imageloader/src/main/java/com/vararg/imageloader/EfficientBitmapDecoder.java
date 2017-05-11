@@ -33,6 +33,7 @@ final class EfficientBitmapDecoder {
         if (reqHeight > 0 && reqWidth > 0)
             options.inSampleSize = calculateInSampleSize(options, reqWidth, reqHeight);
 
+        // Needed for reuse bitmaps from pool
         addInBitmapOptions(options, bitmapPool);
 
         // Decode bitmap with inSampleSize set

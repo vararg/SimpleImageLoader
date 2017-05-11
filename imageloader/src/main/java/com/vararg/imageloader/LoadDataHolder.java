@@ -6,9 +6,10 @@ import java.lang.ref.WeakReference;
 
 /**
  * Created by vararg on 11.05.2017.
+ *
+ * Holder for url and image view, used in runnable
  */
 
-//TODO add comments
 class LoadDataHolder {
     private String url;
     private WeakReference<ImageView> weakReference;
