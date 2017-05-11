@@ -130,11 +130,9 @@ public class ImageLoader {
             connection.setReadTimeout(CONNECTION_TIMEOUT);
             connection.setInstanceFollowRedirects(true);
 
-            //Save image to file
+            // Save image to temp file
             InputStream is = connection.getInputStream();
             tempOs = new FileOutputStream(tempFile);
-
-            // Inspired by Guava's ByteStreams.copy()
             StreamUtils.copy(is, tempOs);
 
             Log.d("HIHO", "bitmap from web");
@@ -142,15 +140,18 @@ public class ImageLoader {
             // Decode and scale image to reduce memory consumption
             bitmap = decodeAndScale(tempFile);
 
+            // Save scaled bitmap to cache file
             cacheOs = new FileOutputStream(cacheFile);
             bitmap.compress(Bitmap.CompressFormat.JPEG, 100, cacheOs);
 
         } catch (IOException e) {
             Log.e(TAG, "Error while image was loaded and stored", e);
+            // Remove cached file if something go wrong
             cacheFile.delete();
         } finally {
             StreamUtils.closeQuietly(tempOs);
             StreamUtils.closeQuietly(cacheOs);
+            // Remove temp file
             tempFile.delete();
             if (connection != null) connection.disconnect();
         }
