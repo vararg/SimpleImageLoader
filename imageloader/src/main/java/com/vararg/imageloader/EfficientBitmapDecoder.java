@@ -30,8 +30,8 @@ final class EfficientBitmapDecoder {
         BitmapFactory.decodeFile(filePath, options);
 
         // Calculate inSampleSize
-        if (reqHeight > 0 && reqWidth > 0)
-            options.inSampleSize = calculateInSampleSize(options, reqWidth, reqHeight);
+        options.inSampleSize =
+                (reqHeight > 0 && reqWidth > 0) ? calculateInSampleSize(options, reqWidth, reqHeight) : 1;
 
         // Needed for reuse bitmaps from pool
         addInBitmapOptions(options, bitmapPool);
