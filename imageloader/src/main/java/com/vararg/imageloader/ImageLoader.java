@@ -85,7 +85,7 @@ public class ImageLoader {
 
     public void clearCache(Context context) {
         memoryCache.clear();
-        diskCache.clear();
+        executorService.submit(new ClearDiskCacheRunnable());
     }
 
     private void loadAndDisplay(String url, ImageView imageView) {
@@ -229,6 +229,13 @@ public class ImageLoader {
                 else
                     loadDataHolder.getImageView().setImageResource(R.color.error);
             }
+        }
+    }
+
+    private class ClearDiskCacheRunnable implements Runnable {
+        @Override
+        public void run() {
+            diskCache.clear();
         }
     }
 }

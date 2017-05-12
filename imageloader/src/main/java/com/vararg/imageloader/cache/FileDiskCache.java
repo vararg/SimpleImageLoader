@@ -19,7 +19,7 @@ public class FileDiskCache implements Cache<String, File> {
     }
 
     @Override
-    public File getData(String url) {
+    public synchronized File getData(String url) {
         // Identify images by hashcode
         String filename = String.valueOf(url.hashCode());
 
@@ -27,7 +27,7 @@ public class FileDiskCache implements Cache<String, File> {
     }
 
     @Override
-    public void clear() {
+    public synchronized void clear() {
         // Get file list from cacheDir
         File[] files = cacheDir.listFiles();
         if (files != null) {
