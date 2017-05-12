@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.widget.Toast;
 
 import com.vararg.imageloader.ImageLoader;
 import com.vararg.sample.widgets.SpacesItemDecoration;
@@ -33,11 +34,15 @@ public class MainActivity extends AppCompatActivity {
         fillList();
     }
 
+
     private void initRefreshLayout() {
-        //clear image loader caches and reset list data
         refreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
+
+                // Clear image loader caches and reset list data
+                Toast.makeText(MainActivity.this, R.string.on_refresh_message,
+                        Toast.LENGTH_LONG).show();
                 ImageLoader.with(MainActivity.this)
                         .clearCache(MainActivity.this);
                 fillList();

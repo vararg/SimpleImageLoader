@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">SimpleImageLoader</string>
+    <string name="on_refresh_message">Caches cleared, data will be reloaded</string>
 </resources>
